@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { LayoutContainer, NavigationBarContainer, LogoContainer } from "./layout.styles";
+import { LayoutContainer, NavigationBarContainer, LogoContainer } from "./styles";
 import Logo from "@/assets/warehouse-logo.png";
 import { Nav } from "./Nav";
 import { ModeToggle } from "..";

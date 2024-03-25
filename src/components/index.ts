@@ -1,5 +1,11 @@
+export * from './charts';
+export { default as CategoryStockOverview } from './features/inventory-and-stock/CategoryStockOverview';
+export {  default as TableStock } from './features/inventory-and-stock/TableStock';
 export * from './layout';
 export * from './theme-provider/theme-provider';
 export * from './ui/button';
+export * from './ui/card';
+export * from './ui/dropdown-menu';
 export * from './ui/mode-toggle';
 export * from './ui/tooltip';
+export * from './ui/tabs';

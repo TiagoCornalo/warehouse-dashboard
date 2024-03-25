@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const LayoutContainer = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: row;
   min-height: 100vh;
   max-width: 100vw;
@@ -14,11 +13,13 @@ export const LayoutContainer = styled.div`
 
   & > main {
     width: 100%;
+    height: 100%;
     padding: 2rem;
-    margin-left: 3.25rem;
+    margin-left: 7rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     @media (max-width: 768px) {
       margin-left: 0;
