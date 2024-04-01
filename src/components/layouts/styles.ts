@@ -28,6 +28,31 @@ export const LayoutContainer = styled.div`
   }
 `;
 
+export const LayoutContainerAuth = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  min-height: 100vh;
+  max-width: 100vw;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  & > button {
+    margin: 1rem;
+  }
+
+  & > main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`
+
 export const NavigationBarContainer = styled.div`
   display: flex;
   align-items: center;
