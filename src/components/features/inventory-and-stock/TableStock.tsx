@@ -7,7 +7,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+  Badge
+} from "@/components";
 import { tableData } from "./mockedData";
 
 
@@ -16,11 +17,11 @@ const TableStock = () => {
   const getStockStatusClass = (stockStatus: string): string => {
     switch(stockStatus) {
       case 'In Stock':
-        return 'bg-green-500';
-      case 'Low Stock':
-        return 'bg-yellow-500';
-      case 'Out of Stock':
-        return 'bg-red-500';
+      return 'bg-green-500/75';
+    case 'Low Stock':
+      return 'bg-yellow-500/75';
+    case 'Out of Stock':
+      return 'bg-red-500/75';
       default:
         return '';
     }
@@ -34,27 +35,33 @@ const TableStock = () => {
           <TableHead className="w-[100px]">ID</TableHead>
           <TableHead>Description</TableHead>
           <TableHead>Category</TableHead>
-          <TableHead className="text-right">Stock</TableHead>
-          <TableHead className="text-right">Minimum Required</TableHead>
-          <TableHead className="text-right">Last Update</TableHead>
+          <TableHead className="text-center">Stock</TableHead>
+          <TableHead className="text-center">Minimum Required</TableHead>
+          <TableHead className="text-center">Last Update</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {tableData.map((item) => (
-          <TableRow key={item.id} className={getStockStatusClass(item.stockStatus)}>
-            <TableCell className="font-medium">{item.id}</TableCell>
+          <TableRow key={item.id}>
+            <TableCell className="font-medium">
+              {item.id}
+              </TableCell>
             <TableCell>{item.description}</TableCell>
             <TableCell>{item.category}</TableCell>
-            <TableCell className="text-right">{item.stock}</TableCell>
-            <TableCell className="text-right">{item.minimumRequired}</TableCell>
-            <TableCell className="text-right">{item.lastUpdate}</TableCell>
+            <TableCell className="text-center">
+            <Badge variant="outline" className={getStockStatusClass(item.stockStatus)}>
+              {item.stock}
+            </Badge>
+              </TableCell>
+            <TableCell className="text-center">{item.minimumRequired}</TableCell>
+            <TableCell className="text-center">{item.lastUpdate}</TableCell>
           </TableRow>
         ))}
       </TableBody>
       <TableFooter>
         <TableRow>
           <TableCell colSpan={5}></TableCell>
-          <TableCell className="text-right">Total Items: {tableData.length}</TableCell>
+          <TableCell className="text-center">Total Items: {tableData.length}</TableCell>
         </TableRow>
       </TableFooter>
     </Table>

@@ -4,8 +4,13 @@ import Logo from '@/assets/warehouse-logo.png';
 import { Nav } from './Nav';
 import { ModeToggle } from '..';
 import { LucideIcon, PieChart, Truck, AreaChart, TrendingUp, HardHat } from 'lucide-react';
+import { UserButton } from '@clerk/clerk-react';
+import { dark } from '@clerk/themes';
+import { useTheme } from '@/components';
 
 const Layout = ({ children }: { children: ReactNode }) => {
+  const { theme } = useTheme();
+
   const links: {
     title: string;
     label?: string;
@@ -46,7 +51,15 @@ const Layout = ({ children }: { children: ReactNode }) => {
           <img src={Logo} alt="Warehouse Logo" />
         </LogoContainer>
         <Nav links={links} isCollapsed />
+        <div className='grid grid-cols-2 gap-4 ml-4'>
+        <UserButton
+          afterSignOutUrl="/"
+          appearance={{
+            baseTheme: theme === 'light' ? undefined : dark,
+          }}
+        />
         <ModeToggle />
+        </div>
       </NavigationBarContainer>
       <main>{children}</main>
     </LayoutContainer>

@@ -1,10 +1,10 @@
-import { Layout } from "@/components"
+import { LayoutMain } from "@/components"
 
 const OperationalPerformance = () => {
   return (
-    <Layout>
+    <LayoutMain>
     <div>OperationalPerformance</div>
-    </Layout>
+    </LayoutMain>
   )
 }
 
