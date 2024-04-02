@@ -1,11 +1,11 @@
-import { Layout, CategoryStockOverview, TableStock } from "@/components"
+import { LayoutMain, CategoryStockOverview, TableStock } from "@/components"
 
 const InventoryAndStock = () => {
   return (
-    <Layout>
+    <LayoutMain>
       <CategoryStockOverview />
       <TableStock />
-    </Layout>
+    </LayoutMain>
   )
 }
 

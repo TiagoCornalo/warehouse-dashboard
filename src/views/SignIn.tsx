@@ -1,11 +1,22 @@
 import { SignIn } from '@clerk/clerk-react';
-import { LayoutAuth } from '@/components';
+import { LayoutAuthForm } from '@/components';
+import { dark } from '@clerk/themes';
+import { useTheme } from '@/components';
 
 const SignInPage = () => {
+  const { theme } = useTheme();
+
   return (
-    <LayoutAuth>
-      <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" afterSignInUrl="/inventory-and-stock" />
-    </LayoutAuth>
+    <LayoutAuthForm>
+      <SignIn
+        path="/sign-in"
+        routing="path"
+        signUpUrl="/sign-up"
+        appearance={{
+          baseTheme: theme === 'light' ? undefined : dark,
+        }}
+      />
+    </LayoutAuthForm>
   );
 };
 

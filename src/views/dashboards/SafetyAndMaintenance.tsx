@@ -1,10 +1,10 @@
-import { Layout } from "@/components"
+import { LayoutMain } from "@/components"
 
 const SafetyAndMaintenance = () => {
   return (
-    <Layout>
+    <LayoutMain>
     <div>SafetyAndMaintenance</div>
-    </Layout>
+    </LayoutMain>
   )
 }
 
