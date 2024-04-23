@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
 
   if (!isLoaded) {
-    return <div>Cargando...</div>;
+    return <div className='w-full h-screen text-center flex items-center justify-center'>Loading...</div>;
   }
 
   if (!isSignedIn) {

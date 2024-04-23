@@ -15,6 +15,7 @@ const SignInPage = () => {
         appearance={{
           baseTheme: theme === 'light' ? undefined : dark,
         }}
+        afterSignInUrl={'/dashboard-home'}
       />
     </LayoutAuthForm>
   );
