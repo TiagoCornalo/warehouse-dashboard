@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 import { LayoutContainer, NavigationBarContainer, LogoContainer } from './styles';
-import Logo from '@/assets/warehouse-logo.png';
+import BlinkLogo from '@/assets/blink.png';
 import { Nav } from './Nav';
 import { ModeToggle } from '..';
-import { LucideIcon, PieChart, Truck, AreaChart, TrendingUp, HardHat } from 'lucide-react';
+import { LucideIcon, PieChart, Truck, AreaChart, TrendingUp, HardHat, HomeIcon } from 'lucide-react';
 import { UserButton } from '@clerk/clerk-react';
 import { dark } from '@clerk/themes';
 import { useTheme } from '@/components';
+import { Link } from 'react-router-dom';
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const { theme } = useTheme();
@@ -17,6 +18,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
     icon: LucideIcon;
     variant: 'default' | 'ghost';
   }[] = [
+    {
+      title: 'Dashboard Home',
+      icon: HomeIcon,
+      variant: 'default',
+    },
     {
       title: 'Inventory and Stock',
       icon: PieChart,
@@ -48,17 +54,23 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <LayoutContainer>
       <NavigationBarContainer>
         <LogoContainer>
-          <img src={Logo} alt="Warehouse Logo" />
+          <Link to="/">
+            <img
+              src={BlinkLogo}
+              alt="Blink Logo"
+              className="w-[80px] h-[80px] object-contain bg-[#0c0a09] rounded-full px-2"
+            />
+          </Link>
         </LogoContainer>
         <Nav links={links} isCollapsed />
-        <div className='grid grid-cols-2 gap-4 ml-4'>
-        <UserButton
-          afterSignOutUrl="/"
-          appearance={{
-            baseTheme: theme === 'light' ? undefined : dark,
-          }}
-        />
-        <ModeToggle />
+        <div className="grid grid-cols-2 gap-4 ml-4">
+          <UserButton
+            afterSignOutUrl="/"
+            appearance={{
+              baseTheme: theme === 'light' ? undefined : dark,
+            }}
+          />
+          <ModeToggle />
         </div>
       </NavigationBarContainer>
       <main>{children}</main>

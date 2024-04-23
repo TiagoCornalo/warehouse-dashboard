@@ -80,6 +80,6 @@ export const LogoContainer = styled.div`
   margin-bottom: 1rem;
 
   @media (max-width: 768px) {
-    margin-bottom: 0;
+    display: none;
   }
 `
