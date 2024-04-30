@@ -1,0 +1,20 @@
+{
+  "dashboards": [
+    {
+      "title": "Inventory and Stock",
+      "path": "inventory-and-stock",
+      "embedUrl": "https://app.powerbi.com/reportEmbed?reportId=...",
+      "accessToken": "eyJ0eXAiOiJKV...",
+      "reportId": "425b1d9c-e98d-4c0e-9a09-2873ddbb8738",
+      "icon": "PieChart"
+    },
+    {
+      "title": "Business Intelligence",
+      "path": "business-intelligence",
+      "embedUrl": "https://app.powerbi.com/reportEmbed?reportId=...",
+      "accessToken": "eyJ0eXAiOiJKV...",
+      "reportId": "425b1d9c-e98d-4c0e-9a09-2873ddbb8738",
+      "icon": "TrendingUp"
+    }
+  ]
+}

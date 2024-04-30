@@ -19,7 +19,7 @@ export const LayoutContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 
     @media (max-width: 768px) {
       margin-left: 0;
@@ -68,6 +68,7 @@ export const NavigationBarContainer = styled.div`
   @media (max-width: 768px) {
     height: 7rem;
     flex-direction: row;
+    justify-content: center;
     position: sticky;
   }
 `

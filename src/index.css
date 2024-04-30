@@ -84,7 +84,7 @@
   .bi-embedded {
     display: inline-block;
     width: 90%;
-    height: 800px;
+    height: 90vh;
     vertical-align: -0.125em;
     fill: currentColor;
     overflow: hidden;

@@ -1,5 +1,5 @@
-export { default as ProtectedRoute } from './auth/ProtectedRoute';
 export { default as AuthButton } from './auth/AuthButton';
+export { default as DashboardPowerBi } from './dashboards/DashboardPowerBi';
 export * from './charts';
 export { default as HomeHeader } from './features/home/HomeHeader';
 export { default as CategoryStockOverview } from './features/inventory-and-stock/CategoryStockOverview';
