@@ -1,84 +1,77 @@
-import { Link } from "react-router-dom"
-import { LucideIcon } from "lucide-react"
-
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "../ui/button"
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "../ui/tooltip"
+import { Link } from 'react-router-dom';
+import { cn } from '@/lib/utils';
+import { buttonVariants } from '../ui/button';
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '../ui/tooltip';
+import { useDashboards } from '@/context';
+import { DashboardWithIcon } from '@/types';
+import { HomeIcon } from 'lucide-react';
 
 interface NavProps {
-  isCollapsed: boolean
-  links: {
-    title: string
-    label?: string
-    icon: LucideIcon
-    variant: "default" | "ghost"
-  }[]
+  isCollapsed: boolean;
 }
 
-export function Nav({ links, isCollapsed }: NavProps) {
+export function Nav({ isCollapsed }: NavProps) {
+  const { dashboards } = useDashboards();
+
   return (
     <TooltipProvider delayDuration={0}>
-    <div
-      data-collapsed={isCollapsed}
-      className="group flex flex-col gap-4 py-2 data-[collapsed=true]:py-2"
-    >
-      <nav className="flex gap-4 px-2 md:grid  group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2 ">
-        {links.map((link, index) =>
-          isCollapsed ? (
-            <Tooltip key={index} delayDuration={0}>
-              <TooltipTrigger asChild>
-                <Link
-                to={`/${link.title.toLowerCase().replace(/ /g, "-")}`}
-                  className={cn(
-                    buttonVariants({ variant: link.variant, size: "icon" }),
-                    "h-9 w-9",
-                    link.variant === "default" &&
-                      "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                  )}
-                >
-                  <link.icon className="h-4 w-4" />
-                  <span className="sr-only">{link.title}</span>
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent side="right" className="flex items-center gap-4">
-                {link.title}
-                {link.label && (
-                  <span className="ml-auto text-muted-foreground">
-                    {link.label}
-                  </span>
+      <div data-collapsed={isCollapsed} className="group flex flex-col gap-4 py-2 data-[collapsed=true]:py-2">
+        <nav className="flex gap-4 px-2 md:grid  group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2 ">
+          <Tooltip key={'dashboard-home'} delayDuration={0}>
+            <TooltipTrigger asChild>
+              <Link
+                to="/dashboard-home"
+                className={cn(
+                  buttonVariants({ variant: 'default', size: 'icon' }),
+                  'h-9 w-9',
+                  'dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white'
                 )}
-              </TooltipContent>
-            </Tooltip>
-          ) : (
-            <Link
-              to={`/${link.title.toLowerCase().replace(/ /g, "-")}`}
-              key={index}
-              className={cn(
-                buttonVariants({ variant: link.variant, size: "sm" }),
-                link.variant === "default" &&
-                  "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
-                "justify-start"
-              )}
-            >
-              <link.icon className="mr-2 h-4 w-4" />
-              {link.title}
-              {/* Uncomment this for add a label to the link */}
-              {/* {link.label && (
-                <span
-                  className={cn(
-                    "ml-auto",
-                    link.variant === "default" &&
-                      "text-background dark:text-white"
-                  )}
-                >
-                  {link.label}
-                </span>
-              )} */}
-            </Link>
-          )
-        )}
-      </nav>
-    </div>
+              >
+                <HomeIcon className="h-5 w-5" />
+                <span className="sr-only">Dashboard Home</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right" className="flex items-center gap-4">
+              Dashboard Home
+            </TooltipContent>
+          </Tooltip>
+          {dashboards?.map((dashboard: DashboardWithIcon, index: number) =>
+            isCollapsed ? (
+              <Tooltip key={index} delayDuration={0}>
+                <TooltipTrigger asChild>
+                  <Link
+                    to={`/${dashboard.path.toLowerCase().replace(/ /g, '-')}`}
+                    className={cn(
+                      buttonVariants({ variant: 'default', size: 'icon' }),
+                      'h-9 w-9',
+                      'dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white'
+                    )}
+                  >
+                    {dashboard.icon}
+                    <span className="sr-only">{dashboard.title}</span>
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent side="right" className="flex items-center gap-4">
+                  {dashboard.title}
+                </TooltipContent>
+              </Tooltip>
+            ) : (
+              <Link
+                to={`/${dashboard.path.toLowerCase().replace(/ /g, '-')}`}
+                key={index}
+                className={cn(
+                  buttonVariants({ variant: 'default', size: 'sm' }),
+                  'dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white',
+                  'justify-start'
+                )}
+              >
+                {dashboard.icon}
+                {dashboard.title}
+              </Link>
+            )
+          )}
+        </nav>
+      </div>
     </TooltipProvider>
-  )
+  );
 }
