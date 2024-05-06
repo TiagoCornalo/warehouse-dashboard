@@ -1,77 +1,60 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '../ui/button';
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '../ui/tooltip';
 import { useDashboards } from '@/context';
 import { DashboardWithIcon } from '@/types';
-import { HomeIcon } from 'lucide-react';
+import { HomeIcon, Menu } from 'lucide-react';
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components';
 
-interface NavProps {
-  isCollapsed: boolean;
-}
-
-export function Nav({ isCollapsed }: NavProps) {
+export function Nav() {
   const { dashboards } = useDashboards();
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleOpenChange = (open: boolean) => {
+    setMenuOpen(open);
+  };
+
   return (
-    <TooltipProvider delayDuration={0}>
-      <div data-collapsed={isCollapsed} className="group flex flex-col gap-4 py-2 data-[collapsed=true]:py-2">
-        <nav className="flex gap-4 px-2 md:grid  group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2 ">
-          <Tooltip key={'dashboard-home'} delayDuration={0}>
-            <TooltipTrigger asChild>
-              <Link
-                to="/dashboard-home"
-                className={cn(
-                  buttonVariants({ variant: 'default', size: 'icon' }),
-                  'h-9 w-9',
-                  'dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white'
-                )}
-              >
-                <HomeIcon className="h-5 w-5" />
-                <span className="sr-only">Dashboard Home</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right" className="flex items-center gap-4">
-              Dashboard Home
-            </TooltipContent>
-          </Tooltip>
-          {dashboards?.map((dashboard: DashboardWithIcon, index: number) =>
-            isCollapsed ? (
-              <Tooltip key={index} delayDuration={0}>
-                <TooltipTrigger asChild>
-                  <Link
-                    to={`/${dashboard.path.toLowerCase().replace(/ /g, '-')}`}
-                    className={cn(
-                      buttonVariants({ variant: 'default', size: 'icon' }),
-                      'h-9 w-9',
-                      'dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white'
-                    )}
-                  >
-                    {dashboard.icon}
-                    <span className="sr-only">{dashboard.title}</span>
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent side="right" className="flex items-center gap-4">
-                  {dashboard.title}
-                </TooltipContent>
-              </Tooltip>
-            ) : (
-              <Link
-                to={`/${dashboard.path.toLowerCase().replace(/ /g, '-')}`}
-                key={index}
-                className={cn(
-                  buttonVariants({ variant: 'default', size: 'sm' }),
-                  'dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white',
-                  'justify-start'
-                )}
-              >
-                {dashboard.icon}
-                {dashboard.title}
-              </Link>
-            )
-          )}
-        </nav>
-      </div>
-    </TooltipProvider>
+    <DropdownMenu onOpenChange={handleOpenChange}>
+      <DropdownMenuTrigger asChild>
+        <Button variant={menuOpen ? 'default' : 'ghost'}>
+          <Menu className="h-6 w-6" />
+        </Button>
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent className="w-64">
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <Link
+            to="/dashboard-home"
+            className={cn(
+              buttonVariants({ variant: 'default', size: 'sm' }),
+              'dark:bg-muted dark:text-white dark:hover:bg-primary dark:hover:text-white',
+              'justify-start align-center', 'w-full'
+            )}
+          >
+            <HomeIcon className="h-5 w-5" />
+            <span className="ml-2  text-sm">Dashboard Home</span>
+          </Link>
+        </DropdownMenuItem>
+
+        {dashboards?.map((dashboard: DashboardWithIcon, index: number) => (
+          <DropdownMenuItem asChild key={index} className="cursor-pointer mt-2">
+            <Link
+              to={`/${dashboard.path.toLowerCase().replace(/ /g, '-')}`}
+              className={cn(
+                buttonVariants({ variant: 'default', size: 'sm' }),
+                'dark:bg-muted dark:text-white dark:hover:bg-primary dark:hover=text-white',
+                'justify-start align-center', 'w-full'
+              )}
+            >
+              {dashboard.icon}
+              <span className="ml-2 text-sm">{dashboard.title}</span>
+            </Link>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

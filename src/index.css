@@ -83,7 +83,7 @@
 
   .bi-embedded {
     display: inline-block;
-    width: 90%;
+    width: 100%;
     height: 90vh;
     vertical-align: -0.125em;
     fill: currentColor;
