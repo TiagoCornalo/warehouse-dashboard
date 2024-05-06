@@ -1,20 +1,22 @@
 {
   "dashboards": [
     {
-      "title": "Inventory and Stock",
-      "path": "inventory-and-stock",
-      "embedUrl": "https://app.powerbi.com/reportEmbed?reportId=...",
-      "accessToken": "eyJ0eXAiOiJKV...",
-      "reportId": "425b1d9c-e98d-4c0e-9a09-2873ddbb8738",
+      "title": "Sales Dashboard Real Time",
+      "path": "sales-rt",
+      "type": "dashboard",
+      "embedUrl": "https://app.powerbi.com/dashboardEmbed?dashboardId=987c82e8-3bed-49b6-8b27-8928c722d73f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6e319",
+      "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvZmI0YjQwMmEtYTNmZC00MjYzLWEzYTctNzIwMmZkZDRmYmZmLyIsImlhdCI6MTcxNTAxNzcyMywibmJmIjoxNzE1MDE3NzIzLCJleHAiOjE3MTUwMjI3MjcsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBVlFBcS84V0FBQUE0UU5pK09tcW1rdllNcHlhSmNrQW9RT2ZWVnFpVVJld0FrZ1NsdVZQWUdRdzZNRkVkTlhxeUlvbGpvSnhCejczdTdwdjdCR3o2V2hkR1M1OUw5cy9yTVBsSVk3dXd4d2tuRE1GMU5hUndNTT0iLCJhbXIiOlsicHdkIiwibWZhIl0sImFwcGlkIjoiODcxYzAxMGYtNWU2MS00ZmIxLTgzYWMtOTg2MTBhN2U5MTEwIiwiYXBwaWRhY3IiOiIwIiwiZmFtaWx5X25hbWUiOiJCcmF2byIsImdpdmVuX25hbWUiOiJPcGVuIiwiaXBhZGRyIjoiMjgwMjo4MDEwOjk5MGQ6YWQwMDoyMDQxOjk5MGY6NDhiNzpmN2ViIiwibmFtZSI6Ik9wZW4gQnJhdm8iLCJvaWQiOiJmYjY3MGQ3Ny01ZTdlLTQxZWUtOTVhZC1mZGNiYmNkYzQ0NGIiLCJwdWlkIjoiMTAwMzIwMDBDQjQ4N0FCRiIsInJoIjoiMC5BVzRBS2tCTC1fMmpZMEtqcDNJQ19kVDdfd2tBQUFBQUFBQUF3QUFBQUFBQUFBQnVBTHcuIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic2lnbmluX3N0YXRlIjpbImttc2kiXSwic3ViIjoibTAwN0FKd2ctVk1YOENQLXRHSG9Wa2RuODJ6eHJ3RFZ4NDNNVDJmVy1wUSIsInRpZCI6ImZiNGI0MDJhLWEzZmQtNDI2My1hM2E3LTcyMDJmZGQ0ZmJmZiIsInVuaXF1ZV9uYW1lIjoib3BlbmJyYXZvQGltZWNhLmNvbSIsInVwbiI6Im9wZW5icmF2b0BpbWVjYS5jb20iLCJ1dGkiOiJTc3VaUGNzUmQweXA2QkN0Qjc0ZUFBIiwidmVyIjoiMS4wIiwid2lkcyI6WyJiNzlmYmY0ZC0zZWY5LTQ2ODktODE0My03NmIxOTRlODU1MDkiXSwieG1zX3BsIjoiZW4tVVMifQ.NalgPmPkA3Mu2X5DXRD39d8G2iRyv2aTwlNqrD1SJZFXdo_w_v-lhpDoDwlCDPbpSG8BOJ43cACIPDn0hWfeXtQhDf1ewoNWiyJ37RKGjmKGODw9Efa1zbqb_qw1Tnplw7rKk6yzbt_-VftwhKYvPd-7LCewQZZnvlO736Hqlh_EUNqSgpH8p5mewVNEKyTpvOAKvOeuZLAOBVxxir4Sh5v7mCujHO0psosDmYg2S7A6ZKgjT5vwhlTC3zP3TSvgVzWFr36U45kHp3CY4PWs3AWEh3HC9Z-2oUE2cW0xQkk7K3xk2IRJqXkWDFv9voF3IOqxsB3UqbTHCzjqMUJOAA",
+      "reportId": "987c82e8-3bed-49b6-8b27-8928c722d73f",
       "icon": "PieChart"
     },
     {
-      "title": "Business Intelligence",
-      "path": "business-intelligence",
-      "embedUrl": "https://app.powerbi.com/reportEmbed?reportId=...",
-      "accessToken": "eyJ0eXAiOiJKV...",
+      "title": "Sales Dashboard Real Time 2",
+      "path": "sales-rt2",
+      "type": "dashboard",
+      "embedUrl": "https://app.powerbi.com/dashboardEmbed?dashboardId=987c82e8-3bed-49b6-8b27-8928c722d73f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6e319",
+      "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4d",
       "reportId": "425b1d9c-e98d-4c0e-9a09-2873ddbb8738",
-      "icon": "TrendingUp"
+      "icon": "PieChart"
     }
   ]
 }

@@ -10,7 +10,7 @@ const DashboardRoutes = () => {
     <Routes>
       <Route path="dashboard-home" element={<DashboardHome />} />
       {dashboards?.map((dashboard) => (
-        <Route key={dashboard.path} path={dashboard.path} element={<DashboardPowerBi config={dashboard} />} />
+        <Route key={dashboard.path} path={dashboard.path} element={<DashboardPowerBi key={dashboard.path} config={dashboard} />} />
       ))}
     </Routes>
   );

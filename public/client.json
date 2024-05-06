@@ -1,0 +1,9 @@
+{
+  "client": {
+    "name": "IMECA",
+    "logo": "https://res.cloudinary.com/dk7tbqrxn/image/upload/v1715023411/iqtgkp09azncnzjrapqw.png",
+    "address": "123 Calle Principal, Ciudad",
+    "phone": "+1 (234) 567-8901",
+    "email": "contact@empresa-xyz.com"
+  }
+}

@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { DashboardProvider } from '@/context';
+import { DashboardProvider, ClientProvider } from '@/context';
 import { ClerkProvider } from '@clerk/clerk-react';
 import { lazy, Suspense } from 'react';
 import { DashboardRoutes, ProtectedRoute } from '@/routes';
@@ -16,24 +16,26 @@ function App() {
 
   return (
     <ClerkProvider navigate={navigate} publishableKey={PUBLISHABLE_KEY}>
-      <DashboardProvider>
-        <Suspense>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/not-found" element={<NotFound />} />
-            <Route
-              path="/*"
-              element={
-                <ProtectedRoute>
-                  <DashboardRoutes />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </Suspense>
-      </DashboardProvider>
+      <ClientProvider>
+        <DashboardProvider>
+          <Suspense>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/not-found" element={<NotFound />} />
+              <Route
+                path="/*"
+                element={
+                  <ProtectedRoute>
+                    <DashboardRoutes />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </Suspense>
+        </DashboardProvider>
+      </ClientProvider>
     </ClerkProvider>
   );
 }

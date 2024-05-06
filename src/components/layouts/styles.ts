@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const LayoutContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   min-height: 100vh;
   max-width: 100vw;
 
@@ -14,16 +14,15 @@ export const LayoutContainer = styled.div`
   & > main {
     width: 100%;
     height: 100%;
-    padding: 2rem;
-    margin-left: 7rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 70px;
+    padding: 0 1rem;
 
     @media (max-width: 768px) {
-      margin-left: 0;
-      padding: 1rem;
+      margin-top: 0;
     }
   }
 `;
@@ -60,14 +59,16 @@ export const LayoutContainerAuth = styled.div`
 export const NavigationBarContainer = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: space-between;
   position: fixed;
-  height: 95vh;
+  padding: 1rem;
+  height: 70px;
+  width: 100%;
+  text-align: center;
 
   @media (max-width: 768px) {
     height: 7rem;
-    flex-direction: row;
+    flex-direction: column-reverse;
     justify-content: center;
     position: sticky;
   }
@@ -77,10 +78,22 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
 
   @media (max-width: 768px) {
     display: none;
   }
 `
+export interface MenuContainerProps {
+  open: boolean;
+}
+
+export const MenuContainer = styled.div<MenuContainerProps>`
+  max-height: ${(props) => (props.open ? '500px' : '0')};
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  position: absolute;
+  z-index: 1;
+  top: 2.5rem;
+  left: 0;
+  width: 100%;
+`;
