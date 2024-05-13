@@ -41,7 +41,6 @@ export const DashboardProvider = ({ children }: { children: React.ReactNode }) =
       if (storedData) {
         const parsedData = JSON.parse(storedData);
         if (new Date(parsedData.tokenExpiry) > new Date()) {
-          console.log('Using stored data');
           setDashboards(parsedData.dashboards);
           return;
         }

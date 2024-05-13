@@ -50,7 +50,7 @@ export function Nav() {
               )}
             >
               {dashboard.icon}
-              <span className="ml-2 text-sm">{dashboard.title}</span>
+              <span className="ml-2 text-sm">{dashboard.reportName}</span>
             </Link>
           </DropdownMenuItem>
         ))}
