@@ -18,21 +18,19 @@ export type IconName =
   | 'ShieldCheck';
 
 export interface DashboardRoute {
-  title: string;
-  path: string;
-  type: string;
   embedUrl: string;
-  accessToken: string;
   reportId: string;
+  path: string;
+  reportName: string;
+  type: string;
   icon: IconName;
 }
 
 export interface DashboardWithIcon {
-  title: string;
-  path: string;
-  type: string;
   embedUrl: string;
-  accessToken: string;
   reportId: string;
+  path: string;
+  reportName: string;
+  type: string;
   icon: ReactElement;
 }

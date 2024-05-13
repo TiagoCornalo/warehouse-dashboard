@@ -9,7 +9,7 @@ interface DashboardProps {
     path: string;
     type: string;
     embedUrl: string;
-    accessToken: string;
+    embedToken: string;
     reportId: string;
   };
 }
@@ -34,8 +34,8 @@ const DashboardPowerBi: React.FC<DashboardProps> = ({ config }) => {
 
   const embedConfig = {
     type: config.type,
-    tokenType: models.TokenType.Aad,
-    accessToken: config.accessToken,
+    tokenType: models.TokenType.Embed,
+    accessToken: config.embedToken,
     embedUrl: config.embedUrl,
     id: config.reportId,
     pageView: isMobile ? 'oneColumn' : 'fitToWidth',
