@@ -3,6 +3,8 @@ import { PowerBIEmbed } from 'powerbi-client-react';
 import { models } from 'powerbi-client';
 import { LayoutMain } from '@/components';
 import useIsMobile from '@/hooks/useIsMobile';
+import { useUser } from '@clerk/clerk-react';
+import {canAccessDashboards} from '@/utils';
 
 interface DashboardProps {
   config: {
@@ -11,12 +13,24 @@ interface DashboardProps {
     embedUrl: string;
     embedToken: string;
     reportId: string;
+    permissions: any
   };
 }
 
 const DashboardPowerBi: React.FC<DashboardProps> = ({ config }) => {
+  const { user } = useUser();
   const { isMobile } = useIsMobile();
+  const userPermissions = user?.publicMetadata?.additional_permissions;
+  const dashboardPermissions = config.permissions;
+
   const [isConfigLoaded, setIsConfigLoaded] = useState(false);
+
+  useEffect(() => {
+    const hasAccess = canAccessDashboards(dashboardPermissions, userPermissions);
+    if (!hasAccess) {
+      window.location.href = '/';
+    }
+  }, [config, userPermissions, dashboardPermissions]);
 
   useEffect(() => {
     setIsConfigLoaded(true);

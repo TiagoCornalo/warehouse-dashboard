@@ -18,8 +18,6 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
     (membership) => membership.role === 'org:admin' && membership.organization.slug === 'warehouseorg'
   );
 
-  /* const canViewAdvancedGraphs = (user?.publicMetadata?.additional_permissions as { can_view_advanced_graphs?: boolean })?.can_view_advanced_graphs; */
-
   if (!isAdmin) {
     return <Navigate to="/not-found" />;
   }
