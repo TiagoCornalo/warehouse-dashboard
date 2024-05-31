@@ -71,7 +71,7 @@ export const DashboardProvider = ({ children }: { children: React.ReactNode }) =
         const apiResponses = await Promise.all(
           fallbackDashboards.map(async (dashboard: DashboardRoute) => {
             try {
-              const apiResponse = await axios.get(`http://localhost:8080/getembedinfo?reportid=${dashboard.reportId}&workspaceid=${dashboard.workspaceId}`);
+              const apiResponse = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/getembedinfo?reportid=${dashboard.reportId}&workspaceid=${dashboard.workspaceId}`);
               return {
                 ...dashboard,
                 embedUrl: apiResponse.data.embedReports[0].embedUrl,
