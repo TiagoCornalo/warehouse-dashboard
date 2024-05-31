@@ -19,6 +19,7 @@ export type IconName =
 
 export interface DashboardRoute {
   embedUrl: string;
+  workspaceId: string;
   reportId: string;
   path: string;
   reportName: string;

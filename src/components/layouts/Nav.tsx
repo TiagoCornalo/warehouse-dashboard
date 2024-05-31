@@ -9,7 +9,6 @@ import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMe
 
 export function Nav() {
   const { dashboards } = useDashboards();
-
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleOpenChange = (open: boolean) => {
@@ -24,7 +23,7 @@ export function Nav() {
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-64">
+      <DropdownMenuContent className="w-80">
         <DropdownMenuItem asChild className="cursor-pointer">
           <Link
             to="/dashboard-home"
@@ -42,7 +41,7 @@ export function Nav() {
         {dashboards?.map((dashboard: DashboardWithIcon, index: number) => (
           <DropdownMenuItem asChild key={index} className="cursor-pointer mt-2">
             <Link
-              to={`/${dashboard.path.toLowerCase().replace(/ /g, '-')}`}
+              to={`/${dashboard?.path?.toLowerCase().replace(/ /g, '-')}`}
               className={cn(
                 buttonVariants({ variant: 'default', size: 'sm' }),
                 'dark:bg-muted dark:text-white dark:hover:bg-primary dark:hover=text-white',

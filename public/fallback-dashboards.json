@@ -1,15 +1,16 @@
 {
   "embedReports": [
     {
-      "reportName": "Sales Dashboard Real Time",
-      "path": "sales-rt",
-      "type": "dashboard",
-      "embedUrl": "https://app.powerbi.com/dashboardEmbed?dashboardId=987c82e8-3bed-49b6-8b27-8928c722d73f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLUVBU1QyLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0IiwiZW1iZWRGZWF0dXJlcyI6e319",
+      "reportName": "Imeca Profit & Loss - All Stores",
+      "path": "imeca-pl-allstores",
+      "type": "report",
+      "embedUrl": "https://app.powerbi.com/reportEmbed?reportId=831c0107-593b-41f0-8590-55cde0079be4&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVNPVVRILUNFTlRSQUwtVVMtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQiLCJlbWJlZEZlYXR1cmVzIjp7InVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d",
       "embedToken": "",
-      "reportId": "987c82e8-3bed-49b6-8b27-8928c722d73f",
+      "reportId": "831c0107-593b-41f0-8590-55cde0079be4",
+      "workspaceId": "428a7ebf-0f56-4f71-8772-7c41fe88a8a2",
       "icon": "PieChart",
       "permissions": {
-        "canViewAdvancedGraphs": true
+        "blinkERP": true
       }
     }
   ]

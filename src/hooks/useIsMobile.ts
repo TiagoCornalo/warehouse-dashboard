@@ -15,7 +15,6 @@ const useIsMobile = () => {
     checkIsMobile()
   }, [])
 
-  console.log(isMobile)
   return { isMobile }
 }
 

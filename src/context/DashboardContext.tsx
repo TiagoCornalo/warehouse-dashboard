@@ -1,8 +1,22 @@
-import React, { createContext, useContext, useState, useEffect, ReactElement } from 'react';
+import { createContext, useContext, useState, useEffect, ReactElement } from 'react';
 import axios from 'axios';
+
 import {
-  PieChart, Truck, AreaChart, TrendingUp, HardHat, BadgeDollarSign, BarChart4,
-  CreditCard, DollarSign, FileText, Folder, FolderOpen, Gauge, History, ShieldCheck
+  PieChart,
+  Truck,
+  AreaChart,
+  TrendingUp,
+  HardHat,
+  BadgeDollarSign,
+  BarChart4,
+  CreditCard,
+  DollarSign,
+  FileText,
+  Folder,
+  FolderOpen,
+  Gauge,
+  History,
+  ShieldCheck
 } from 'lucide-react';
 import { DashboardRoute, IconName, DashboardWithIcon } from '@/types';
 
@@ -21,7 +35,7 @@ const iconMap: Record<IconName, ReactElement> = {
   FolderOpen: <FolderOpen className="h-5 w-5" />,
   Gauge: <Gauge className="h-5 w-5" />,
   History: <History className="h-5 w-5" />,
-  ShieldCheck: <ShieldCheck className="h-5 w-5" />,
+  ShieldCheck: <ShieldCheck className="h-5 w-5" />
 };
 
 const DashboardContext = createContext<{
@@ -41,31 +55,55 @@ export const DashboardProvider = ({ children }: { children: React.ReactNode }) =
       if (storedData) {
         const parsedData = JSON.parse(storedData);
         if (new Date(parsedData.tokenExpiry) > new Date()) {
-          setDashboards(parsedData.dashboards);
+          const dashboardsWithIcons = parsedData.dashboards.map((dashboard: any) => ({
+            ...dashboard,
+            icon: iconMap[dashboard.icon as IconName] || null
+          }));
+          setDashboards(dashboardsWithIcons);
           return;
         }
       }
 
       try {
-        const apiResponse = await axios.get('URL_DEL_API');
-        const updatedDashboards: DashboardWithIcon[] = apiResponse.data.embedReports.map(
-          (dashboard: DashboardRoute) => ({
-            ...dashboard,
-            icon: iconMap[dashboard.icon],
+        const fallbackResponse = await axios.get('/fallback-dashboards.json');
+        const fallbackDashboards = fallbackResponse.data.embedReports;
+
+        const apiResponses = await Promise.all(
+          fallbackDashboards.map(async (dashboard: DashboardRoute) => {
+            try {
+              const apiResponse = await axios.get(`http://localhost:8080/getembedinfo?reportid=${dashboard.reportId}&workspaceid=${dashboard.workspaceId}`);
+              return {
+                ...dashboard,
+                embedUrl: apiResponse.data.embedReports[0].embedUrl,
+                embedToken: apiResponse.data.embedToken,
+                tokenExpiry: apiResponse.data.tokenExpiry,
+                icon: dashboard.icon
+              };
+            } catch (error) {
+              console.error(`Error fetching embed info for ${dashboard.reportId}:`, error);
+              return {
+                ...dashboard,
+                icon: dashboard.icon
+              };
+            }
           })
         );
-        setDashboards(updatedDashboards);
+
+        setDashboards(apiResponses.map(dashboard => ({
+          ...dashboard,
+          icon: iconMap[dashboard.icon as IconName] || null
+        })));
         localStorage.setItem('dashboardData', JSON.stringify({
-          dashboards: updatedDashboards,
-          tokenExpiry: apiResponse.data.tokenExpiry
+          dashboards: apiResponses,
+          tokenExpiry: apiResponses[0]?.tokenExpiry
         }));
       } catch (error) {
-        console.error('Error loading API data, using fallback data:', error);
+        console.error('Error loading data:', error);
         const localResponse = await axios.get('/fallback-dashboards.json');
         const fallbackDashboards: DashboardWithIcon[] = localResponse.data.embedReports.map(
           (dashboard: DashboardRoute) => ({
             ...dashboard,
-            icon: iconMap[dashboard.icon],
+            icon: iconMap[dashboard.icon as IconName] || null,
           })
         );
         setDashboards(fallbackDashboards);
