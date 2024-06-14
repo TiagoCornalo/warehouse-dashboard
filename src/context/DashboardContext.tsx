@@ -71,6 +71,8 @@ export const DashboardProvider = ({ children }: { children: React.ReactNode }) =
         const apiResponses = await Promise.all(
           fallbackDashboards.map(async (dashboard: DashboardRoute) => {
             try {
+              if(dashboard.iframe) return dashboard;
+
               const apiResponse = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/getembedinfo?reportid=${dashboard.reportId}&workspaceid=${dashboard.workspaceId}`);
               return {
                 ...dashboard,

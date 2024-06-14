@@ -1,17 +1,18 @@
 {
   "embedReports": [
     {
-      "reportName": "Imeca Profit & Loss - All Stores",
-      "path": "imeca-pl-allstores",
+      "reportName": "Balance Sheet - All Stores",
+      "path": "bs-allstores",
       "type": "report",
-      "embedUrl": "https://app.powerbi.com/reportEmbed?reportId=831c0107-593b-41f0-8590-55cde0079be4&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVNPVVRILUNFTlRSQUwtVVMtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQiLCJlbWJlZEZlYXR1cmVzIjp7InVzYWdlTWV0cmljc1ZOZXh0Ijp0cnVlfX0%3d",
+      "embedUrl": "https://app.powerbi.com/rdlEmbed?reportId=cf4d662b-88f2-4955-a0b2-0b5f010ca8dd&autoAuth=true&ctid=6609764f-3300-4047-a05b-bceb1a6a5d74&clientSideAuth=0&experience=power-bi",
       "embedToken": "",
-      "reportId": "831c0107-593b-41f0-8590-55cde0079be4",
-      "workspaceId": "428a7ebf-0f56-4f71-8772-7c41fe88a8a2",
+      "reportId": "bc4347cc-7ab8-4730-812d-089a228c1533",
+      "workspaceId":"428a7ebf-0f56-4f71-8772-7c41fe88a8a2",
       "icon": "PieChart",
       "permissions": {
         "blinkERP": true
-      }
+      },
+      "iframe": true
     }
   ]
 }

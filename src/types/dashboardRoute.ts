@@ -25,6 +25,7 @@ export interface DashboardRoute {
   reportName: string;
   type: string;
   icon: IconName;
+  iframe: boolean;
 }
 
 export interface DashboardWithIcon {

@@ -14,6 +14,7 @@ interface DashboardProps {
     embedToken: string;
     reportId: string;
     permissions: any
+    iframe?: boolean;
   };
 }
 
@@ -59,11 +60,16 @@ const DashboardPowerBi: React.FC<DashboardProps> = ({ config }) => {
 
   return (
     <LayoutMain>
-      <PowerBIEmbed
+      {
+        config.iframe ? (
+          <iframe role="presentation" src={config.embedUrl} frameBorder='0' allowFullScreen className='bi-embedded'></iframe>
+        ) :
+        <PowerBIEmbed
         key={config.reportId}
         embedConfig={embedConfig}
         cssClassName={'bi-embedded'}
       />
+      }
     </LayoutMain>
   );
 };
